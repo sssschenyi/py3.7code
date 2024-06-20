@@ -13,7 +13,7 @@ print ("数据库打开成功")
 cursor = conn.cursor() # 开始数据库游标
 # 开始事务，用于大量插入数据
 cursor.execute("BEGIN TRANSACTION")
-s = 1000000
+s = 100
 # values = []
 # 利用推导式生成列表
 values1 = [(random.randint(1,s),) for x in range(0, s)] # 批量插入要注意格式,例如(i,)
@@ -33,4 +33,3 @@ conn.execute('commit')
 endtime = time.time() - starttime
 print ("数据操作成功,插入{}条数据，用时:{}".format(s, endtime))
 conn.close()
-hehe

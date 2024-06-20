@@ -13,6 +13,6 @@ for row in cursor:
     print("name = ", row[2],)
     print("pw = ", row[3],"\n")
 
-print ("数据操作成功")
+print ("数据操作成功！")
 
 conn.close()
