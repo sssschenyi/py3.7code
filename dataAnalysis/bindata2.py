@@ -9,11 +9,12 @@ starttime = time.time()
 
 conn = sqlite3.connect('test2222.db')
 print ("数据库打开成功")
+# CREATE TABLE,如果表不存在则创建
 # cursor = c.execute("CREATE TABLE test (i INTEGER)")
 cursor = conn.cursor() # 开始数据库游标
 # 开始事务，用于大量插入数据
 cursor.execute("BEGIN TRANSACTION")
-s = 100
+s = 1000000 # 要插入的数据条数
 # values = []
 # 利用推导式生成列表
 values1 = [(random.randint(1,s),) for x in range(0, s)] # 批量插入要注意格式,例如(i,)
@@ -23,7 +24,6 @@ for i in range(s):
     value = random.randint(1, 1000)
     values.append((value,))
 # """
-# print(values1)xit
 # 批量插入数据
 cursor.executemany("INSERT INTO test (i) VALUES (?)",values1)
 # 提交事务
